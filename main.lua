@@ -1,3 +1,40 @@
+- RESET LEVEL
+
+function changeLevel1()
+
+	-- Clear Level Bricks 
+	
+	bricks:removeSelf()
+	
+	bricks.numChildren = 0
+	bricks = display.newGroup()
+
+	-- Remove Alert 
+	
+	alertBox:removeEventListener("tap", restart)
+	alertDisplayGroup:removeSelf()
+	alertDisplayGroup = nil
+	
+	-- Reset Ball and Paddle position 
+	
+	ball.x = (display.contentWidth * 0.5) - (ball.width * 0.5)
+	ball.y = (paddle.y - paddle.height) - (ball.height * 0.5) - 2
+	
+	paddle.x =	display.contentWidth * 0.5
+	
+	-- Redraw Bricks 
+	
+	gameLevel1()	
+	
+	-- Start
+	
+	background:addEventListener("tap", startGame)
+end
+
+
+
+
+
 -- WIN/LOSE ARGUMENT
 function restart()
 	if gameEvent == "win" and currentLevel == 1 then
