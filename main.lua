@@ -1,3 +1,27 @@
+function dragPaddle(event)
+	if isSimulator then
+
+		if event.phase == "began" then
+			moveX = event.x - paddle.x
+		elseif event.phase == "moved" then
+			paddle.x = event.x - moveX
+		end
+
+		--邊界，讓板子不要移過頭
+		if((paddle.x - paddle.width * 0.5) < 0) then
+			paddle.x = paddle.width * 0.5
+		elseif((paddle.x + paddle.width * 0.5) > display.contentWidth) then
+			paddle.x = display.contentWidth - paddle * 0.5
+		end
+
+	end
+end
+
+
+
+
+
+
 function removeBrick(event)
 	
 	-- Check the which side of the brick the ball hits, left, right  
