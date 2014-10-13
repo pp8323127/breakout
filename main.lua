@@ -1,3 +1,47 @@
+function addGameScreen()
+	background = display.newImage("background1.jpg",0,0,true) --true→把圖片填滿畫面
+	--background:scale (4,4)
+	background.x = display.contentCenterX --直接取得畫面中心點
+	background.y = display.contentCenterY --直接取得畫面中心點
+
+	paddle = display.newImage("paddle.png")
+	paddle.x = 230; paddle.y = 300
+	paddle.name = "paddle"
+
+	ball = display.newImage("ball.png")
+	ball.x = 230; ball.y = 288
+	ball.name = "ball"
+
+	
+	--Text
+	scoreText = display.newText("Score:", 50, 10, "Arial", 14)
+	scoreText:setTextColor(255, 255, 255, 255)
+	
+	scoreNum = display.newText("0", 90, 10, "Arial", 14)
+	scoreNum:setTextColor(255, 255, 255, 255)
+	
+	levelText = display.newText("Level:", 360, 10, "Arial", 14)
+	levelText:setTextColor(255, 255, 255, 255)
+	
+	levelNum = display.newText("0", 400, 10, "Arial", 14)
+	levelNum:setTextColor(255, 255, 255, 255)
+
+
+
+	-- Build Level Bricks 
+	
+	gameLevel1() 
+	
+	-- -- Start Listener 
+	
+	background:addEventListener("tap", startGame)
+
+end
+
+
+
+
+
 function dragPaddle(event)
 	if isSimulator then
 
