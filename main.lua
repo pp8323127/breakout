@@ -1,3 +1,27 @@
+function dragPaddle(event)
+	
+	if isSimulator then
+		if event.phase == "began" then
+			moveX = event.x - paddle.x -- 事件位置-板子位置
+		elseif event.phase == "moved" then
+			paddle.x = event.x - moveX
+		end
+
+		if((paddle.x - paddle.width * 0.5) < 0) then
+			paddle.x = paddle.width * 0.5
+		elseif((paddle.x + paddle.width * 0.5) > display.contentWidth) then
+			paddle.x = display.contentWidth - paddle.width*0.5
+		end
+
+	
+	end
+end
+
+
+
+
+
+
 function alertScreen(title, message)
 	gameListeners("remove")
 	
