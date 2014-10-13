@@ -1,3 +1,42 @@
+function alertScreen(title, message)
+	gameListeners("remove")
+	
+	alertBox = display.newImage("alertBox.png")
+	alertBox.x = 240; alertBox.y = 160
+	transition.from(alertBox, {time = 500, xScale = 0.5, yScale = 0.5, transition = easing.outExpo})
+
+	conditionDisplay = display.newText(title, 0, 0, "Arial", 38)
+	conditionDisplay:setTextColor(255, 255, 255, 255)
+	conditionDisplay.xScale = 0.5
+	conditionDisplay.yScale = 0.5
+	--conditionDisplay:setReferencePoint(display.CenterReferencePoint)
+	conditionDisplay.anchorX, conditionDisplay.anchorX = 0.5, 0.5
+	conditionDisplay.x = display.contentCenterX
+	conditionDisplay.y = display.contentCenterY - 15
+
+	messageText = display.newText(message, 0, 0, "Arial", 38)
+	messageText:setTextColor(255, 255, 255, 255)
+	messageText.xScale = 0.5
+	messageText.yScale = 0.5
+	--messageText:setReferencePoint(display.CenterReferencePoint)
+	conditionDisplay.anchorX, conditionDisplay.anchorX = 0.5, 0.5
+	conditionDisplay.x = display.contentCenterX
+	conditionDisplay.y = display.contentCenterY 
+
+
+	alertDisplayGroup = display.newGroup()
+	alertDisplayGroup:insert(alertBox)
+	alertDisplayGroup:insert(conditionDisplay)
+	alertDisplayGroup:insert(messageText)
+
+	
+	--alertBox:addEventListener("tap", restart)
+end
+
+
+
+
+
 function addGameScreen()
 	background = display.newImage("background1.jpg",0,0,true) --true→把圖片填滿畫面
 	--background:scale (4,4)
