@@ -1,3 +1,28 @@
+-- WIN/LOSE ARGUMENT
+function restart()
+	if gameEvent == "win" and currentLevel == 1 then
+		currentLevel = currentLevel + 1
+		--currentLevel2()	--next Level
+		levelNum.text = tosrting(currentLevel)
+	elseif gameEvent == "win" and currentLevel == 2 then	
+		alertScreen("  Game Over", "  Congratulations!")
+		gameEvent = "completed"
+	elseif gameEvent == "lose" and currentLevel == 1 then
+		score = 0
+		scoreNum.text = "0"
+		changeLevel1()	--same level
+	elseif gameEvent == "lose" and currentLevel == 2 then
+		score = 0
+		scoreNum.text = "0"
+		changeLevel2()	--same level
+	elseif gameEvent == "completed" then
+		alertBox:removeEventListener("tap", restart)
+	end
+end
+
+
+
+
 function dragPaddle(event)
 	
 	if isSimulator then
