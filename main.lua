@@ -152,7 +152,7 @@ function addGameScreen()
 	levelText = display.newText("Level:", 210, 10, "Arial", 14)
 	levelText:setTextColor(255, 255, 255, 255)
 	
-	levelNum = display.newText("1", 240, 10, "Arial", 14)
+	levelNum = display.newText("0", 240, 10, "Arial", 14)
 	levelNum:setTextColor(255, 255, 255, 255)
 
 
@@ -184,9 +184,9 @@ function touchMove(event)
 
 
 
-	if event.phase == "began" or event.phase == "moved" then
-		if event.x > 160 then
-			paddle.x = paddle.x + 10
+	if event.phase == "began" then	--當點下去螢幕，是began phase
+		if event.x > 160 then	--判斷點下去的位置，是畫面左右哪一半邊（因全寬為320width，160則剛好是左右分界點)
+			paddle.x = paddle.x + 10	--大於160就是往右
 		else
 			paddle.x = paddle.x - 10
 		end
@@ -497,7 +497,7 @@ function restart()
 		--currentLevel2()	--next Level
 		levelNum.text = tosrting(currentLevel)
 	elseif gameEvent == "win" and currentLevel == 2 then	
-		alertScreen("  Game Over", "  Congratulations!")
+		alertScreen("  Game Finish", "  Congratulations!")
 		gameEvent = "completed"
 	elseif gameEvent == "lose" and currentLevel == 1 then
 		score = 0
